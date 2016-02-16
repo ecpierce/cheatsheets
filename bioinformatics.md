@@ -64,4 +64,30 @@ git pull upstream branchname(master)
 
 scratch is just someone has given you space on a server somewhere, it has a different origin, a different tree
 
+ucsc genome browser, table, someone has taken peaks and put into bed file? 
+pandas is set upthat make dataframe manipulation easier than it is in python 
+alignment- need an input dataset "query" and also an index "reference" . alignment algorithms - STAR, kallisto, bowtie, BWA, mozaic.  most align to reference genome. if you want to abundance counts, dont really need to map to everything, found way to not mapping to whole genome, kallisto does psuedoalignment, only maps to subset of expressed things. if want to align to a new exon, use star because aligns to the genome. if looking for something known, use kallisto because only want to map to a subset
 
+databases:
+seq datasets:
+GEO
+SRA
+structural info:
+Ensemble
+UCSC
+
+RNAseq workflow- map, count, stats, analyze
+got fastq from the sequencer, want to get biological relevance- find differentially expressed genes with fold changes (gene ontology, compare to exisiting datasets,compare to KEGG look for disease correlation. basically compare to databases
+to get to fold change, need to get quantification and do some significance tests 
+fastq file align to STAR, give it an index mm8(mouse) or whatever you want to use and also input files (need both index and query
+gets to sam, compress it using samtools view otherwise it would take forever,get bam, use samotools sort to get sorted.bam   
+can use samtools index for viewing
+once get sorted, use featurecounts. featurecounts -a option= annotation (we used gtf file, important ingredient, without it is just genome coordinate, we chose to use basic, could use comprehensive). featurecounts uses the sorted bam and the annotation file as inputs
+after featurecounts, do stats
+
+For kallisto, 
+fastq, then kallisto quant with annotation of transcripts (annotation is already extracted into smaller file)
+
+if want to do dna seq, still aligning to genome, get different stats, for rna seq care about abundance but for dna seq, interested in variants, need some kind of reference annotation and a tool to call variation. 
+if do chip, still map to genome, want abundance, still care about annotaion, where is it mapping (promoter, etc), but not counting on exons, looking for peaks so need a peak calling algorithm
+ribo seq- basically the same as rna seq but then do different stats
