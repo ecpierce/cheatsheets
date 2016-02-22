@@ -91,3 +91,13 @@ fastq, then kallisto quant with annotation of transcripts (annotation is already
 if want to do dna seq, still aligning to genome, get different stats, for rna seq care about abundance but for dna seq, interested in variants, need some kind of reference annotation and a tool to call variation. 
 if do chip, still map to genome, want abundance, still care about annotaion, where is it mapping (promoter, etc), but not counting on exons, looking for peaks so need a peak calling algorithm
 ribo seq- basically the same as rna seq but then do different stats
+
+ctrl a jumps to beginning of line
+ctrl e goes to end of line
+
+screen used to start screen. exit to exit screen session. 
+
+boolean false means 0
+
+fastq then align with star then sam file then get sorted indexed bam file then to quantify used featurecounts. kallisto goes directly from fastq to gene expression counts. if use different aligner, may get different results. also if use something other than featurecounts they have their own biases, youll get different numbers. for featurecounts used gencode basic which has lincrna, trna, mirna, protein coding, but for kallisto we only used protein coding. if had used gencode basic with only the protein coding, would have gotten more similar results 
+
